@@ -235,9 +235,9 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       color: var(--subtext);
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1.2rem;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
@@ -342,7 +342,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .output-card {
@@ -430,25 +430,6 @@
       border-color: var(--accent-blue-hover);
     }
 
-    .drive-card { 
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0.15) 100%); 
-      border: 1px solid rgba(37, 99, 235, 0.3); 
-      border-radius: 10px; 
-      padding: 1.3rem; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      margin-bottom: 2rem; 
-      flex-wrap: wrap; 
-      gap: 1rem; 
-      transition: all 0.3s ease;
-    }
-
-    .drive-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-    }
-
     .drive-btn { 
       background-color: var(--accent-blue); 
       color: white; 
@@ -472,6 +453,7 @@
       box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
     }
 
+    /* Guided Reflection Section */
     .reflection-section { 
       border: 1px solid var(--border); 
       border-radius: 10px; 
@@ -639,7 +621,6 @@
       .header-content h1 { font-size: 2rem; }
       .profile-card { flex-direction: column; text-align: center; }
       .quick-actions { justify-content: center; }
-      .drive-card { flex-direction: column; align-items: flex-start; }
       .drive-btn { width: 100%; justify-content: center; }
       .modal-iframe-container { height: 350px; }
     }
@@ -694,15 +675,15 @@
       </div>
     </div>
 
-    <!-- Category Filter Bar -->
+    <!-- Category Filter Nav -->
     <div class="filter-nav">
-      <button class="filter-btn active" onclick="filterModules('all')">All Modules</button>
-      <button class="filter-btn" onclick="filterModules('anatomy')">Human Anatomy & Histology</button>
-      <button class="filter-btn" onclick="filterModules('reflections')">Reflections</button>
+      <button class="filter-btn active" onclick="filterModules('all', event)"><i class="fa-solid fa-border-all"></i> All Modules</button>
+      <button class="filter-btn" onclick="filterModules('artifacts', event)"><i class="fa-solid fa-folder-open"></i> Artifacts</button>
+      <button class="filter-btn" onclick="filterModules('reflections', event)"><i class="fa-solid fa-pen-nib"></i> Reflections</button>
     </div>
 
-    <!-- Integrated MED101 Section -->
-    <section class="subject-page" data-category="anatomy">
+    <!-- MED101 Module Container -->
+    <section class="subject-page">
       
       <div class="subject-header">
         <span class="code-badge">MED101</span>
@@ -717,67 +698,60 @@
         Showcases creative outputs that demonstrate understanding of human structure and function (e.g., anatomical models, drawings, and educational materials).
       </div>
 
-      <!-- Embedded Course Artifacts Grid -->
-      <div class="artifact-grid-header">
-        <h3 style="color: var(--primary); font-size: 1.15rem; margin: 0;"><i class="fa-solid fa-folder-open"></i> Course Artifacts & Creative Outputs</h3>
-      </div>
-      
-      <div class="outputs-grid">
+      <!-- ARTIFACTS CONTAINER -->
+      <div id="artifacts-container">
         
-        <!-- ARTIFACT 1 -->
-        <div class="output-card">
-          <div>
-            <div class="output-card-type"><i class="fa-solid fa-file-word"></i> Artifact 01 • Written Output / Document</div>
-            <div class="output-card-title">Anatomy & Histology Module Reflection</div>
-            <div class="output-card-desc">Detailed synthesis document covering anatomical structures, histological organization, and clinical reflections for MED101.</div>
+        <div class="artifact-grid-header">
+          <h3 style="color: var(--primary); font-size: 1.15rem; margin: 0;"><i class="fa-solid fa-folder-open"></i> Course Artifacts & Creative Outputs</h3>
+        </div>
+        
+        <div class="outputs-grid">
+          
+          <!-- ARTIFACT 1 -->
+          <div class="output-card">
+            <div>
+              <div class="output-card-type"><i class="fa-solid fa-file-word"></i> Artifact 01 • Written Output / Document</div>
+              <div class="output-card-title">Anatomy & Histology Module Reflection</div>
+              <div class="output-card-desc">Detailed synthesis document covering anatomical structures, histological organization, and clinical reflections for MED101.</div>
+            </div>
+            <div class="output-card-actions">
+              <button class="artifact-btn" onclick="openModal('artifactModal1')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+              <a href="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/edit?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Doc</a>
+            </div>
           </div>
-          <div class="output-card-actions">
-            <button class="artifact-btn" onclick="openModal('artifactModal1')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
-            <a href="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/edit?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Doc</a>
+
+          <!-- ARTIFACT 2 -->
+          <div class="output-card">
+            <div>
+              <div class="output-card-type"><i class="fa-solid fa-file-image"></i> Artifact 02 • Visual/Creative Output</div>
+              <div class="output-card-title">Anatomical & Histological Illustration</div>
+              <div class="output-card-desc">High-resolution visual output illustrating structural anatomical features and microscopic tissue organization.</div>
+            </div>
+            <div class="output-card-actions">
+              <button class="artifact-btn" onclick="openModal('artifactModal2')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+              <a href="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/view?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open File</a>
+            </div>
           </div>
+
+          <!-- ARTIFACT 3 -->
+          <div class="output-card">
+            <div>
+              <div class="output-card-type"><i class="fa-solid fa-file-pdf"></i> Artifact 03 • Educational Resource</div>
+              <div class="output-card-title">Anatomical Study Guide & Media File</div>
+              <div class="output-card-desc">Interactive learning tool and clinical study resource showcasing creative educational synthesis in anatomy.</div>
+            </div>
+            <div class="output-card-actions">
+              <button class="artifact-btn" onclick="openModal('artifactModal3')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+              <a href="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/view?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open File</a>
+            </div>
+          </div>
+
         </div>
 
-        <!-- ARTIFACT 2 -->
-        <div class="output-card">
-          <div>
-            <div class="output-card-type"><i class="fa-solid fa-file-image"></i> Artifact 02 • Visual/Creative Output</div>
-            <div class="output-card-title">Anatomical & Histological Illustration</div>
-            <div class="output-card-desc">High-resolution visual output illustrating structural anatomical features and microscopic tissue organization.</div>
-          </div>
-          <div class="output-card-actions">
-            <button class="artifact-btn" onclick="openModal('artifactModal2')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
-            <a href="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/view?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open File</a>
-          </div>
-        </div>
+      </div> <!-- /artifacts-container -->
 
-        <!-- ARTIFACT 3 -->
-        <div class="output-card">
-          <div>
-            <div class="output-card-type"><i class="fa-solid fa-file-pdf"></i> Artifact 03 • Educational Resource</div>
-            <div class="output-card-title">Anatomical Study Guide & Media File</div>
-            <div class="output-card-desc">Interactive learning tool and clinical study resource showcasing creative educational synthesis in anatomy.</div>
-          </div>
-          <div class="output-card-actions">
-            <button class="artifact-btn" onclick="openModal('artifactModal3')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
-            <a href="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/view?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open File</a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Drive Folder Banner -->
-      <div class="drive-card">
-        <div>
-          <strong style="color: var(--primary); font-size: 1.05rem;"><i class="fa-brands fa-google-drive"></i> Complete Google Drive Folder</strong>
-          <div style="font-size:0.85rem; color: var(--subtext); margin-top: 0.2rem;">View all original full-resolution anatomical models, drawings, and educational materials</div>
-        </div>
-        <a href="https://drive.google.com/drive/folders/13KrkMA04oBSgBd_nCRBh6q0K1lAJ_q3e?usp=drive_link" target="_blank" class="drive-btn">
-          Open Drive Folder <span>&rarr;</span>
-        </a>
-      </div>
-
-      <!-- Guided Reflection Section -->
-      <div class="reflection-section">
+      <!-- GUIDED REFLECTION CONTAINER -->
+      <div id="reflections-container" class="reflection-section">
         <div class="reflection-title">
           <h3 style="margin:0;"><i class="fa-solid fa-pen-nib"></i> Guided Reflection</h3>
           <button class="action-btn" onclick="toggleAllReflections()"><i class="fa-solid fa-arrows-up-down"></i> Toggle All</button>
@@ -819,7 +793,7 @@
           </div>
         </div>
 
-      </div>
+      </div> <!-- /reflections-container -->
 
     </section>
 
@@ -950,19 +924,26 @@
       });
     });
 
-    // Filter Navigation
-    function filterModules(category) {
+    // Category Filter Navigation logic (Artifacts vs Reflections vs All)
+    function filterModules(category, event) {
       document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      
-      const pages = document.querySelectorAll('.subject-page');
-      pages.forEach(page => {
-        if (category === 'all' || page.dataset.category === category || category === 'reflections') {
-          page.style.display = 'block';
-        } else {
-          page.style.display = 'none';
-        }
-      });
+      if (event) {
+        event.currentTarget.classList.add('active');
+      }
+
+      const artifactsBox = document.getElementById('artifacts-container');
+      const reflectionsBox = document.getElementById('reflections-container');
+
+      if (category === 'artifacts') {
+        artifactsBox.style.display = 'block';
+        reflectionsBox.style.display = 'none';
+      } else if (category === 'reflections') {
+        artifactsBox.style.display = 'none';
+        reflectionsBox.style.display = 'block';
+      } else { // 'all'
+        artifactsBox.style.display = 'block';
+        reflectionsBox.style.display = 'block';
+      }
     }
   </script>
 
