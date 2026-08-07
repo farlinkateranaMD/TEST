@@ -457,7 +457,7 @@
       box-shadow: 0 6px 15px rgba(128, 0, 0, 0.3);
     }
 
-    /* Guided Reflection Section */
+    /* Guided Reflection Section (Updated Page Links) */
     .reflection-section { 
       border: 1px solid var(--border); 
       border-radius: 12px; 
@@ -470,71 +470,43 @@
       margin-top: 0; 
       margin-bottom: 1.2rem;
       color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
 
-    .reflection-item {
-      margin-bottom: 0.9rem;
+    .reflection-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .reflection-card-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 1.4rem;
+      background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 10px;
-      overflow: hidden;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      transition: all 0.3s ease;
     }
 
-    .reflection-item:hover {
+    .reflection-card-link:hover {
       border-color: var(--secondary);
-      box-shadow: 0 4px 12px var(--shadow);
-    }
-
-    .reflection-q { 
-      font-weight: 700; 
-      color: var(--text); 
-      background: var(--bg);
-      padding: 1.1rem 1.3rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-      transition: background-color 0.25s ease, color 0.25s ease;
-    }
-
-    .reflection-q:hover {
+      background: var(--card-bg);
       color: var(--primary);
+      transform: translateX(6px);
+      box-shadow: 0 4px 15px var(--shadow);
     }
 
-    .reflection-q::after {
-      content: '▼';
-      font-size: 0.75rem;
-      color: var(--subtext);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .reflection-card-link i {
+      color: var(--secondary);
+      transition: transform 0.3s ease;
     }
 
-    .reflection-item.active .reflection-q::after {
-      transform: rotate(180deg);
-      color: var(--primary);
-    }
-
-    .reflection-a-wrapper {
-      max-height: 800px;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
-    }
-
-    .reflection-item.collapsed .reflection-a-wrapper {
-      max-height: 0;
-    }
-
-    .reflection-a { 
-      background: var(--card-bg); 
-      padding: 1.3rem; 
-      color: var(--text); 
-      border-top: 1px solid var(--border);
-      font-size: 0.96rem;
-      line-height: 1.75;
-      animation: fadeIn 0.4s ease-in-out;
+    .reflection-card-link:hover i {
+      transform: translateX(4px);
     }
 
     /* PLAYFUL ANATOMY GAME STYLES */
@@ -932,49 +904,29 @@
 
       </div> <!-- /artifacts-container -->
 
-      <!-- GUIDED REFLECTION CONTAINER -->
+      <!-- GUIDED REFLECTION CONTAINER (Separate Page Links) -->
       <div id="reflections-container" class="reflection-section">
-        <div class="reflection-title">
-          <h3 style="margin:0;"><i class="fa-solid fa-pen-nib"></i> Guided Reflection</h3>
-          <button class="action-btn" onclick="toggleAllReflections()"><i class="fa-solid fa-arrows-up-down"></i> Toggle All</button>
-        </div>
+        <h3 class="reflection-title"><i class="fa-solid fa-pen-nib"></i> Guided Reflection</h3>
 
-        <!-- Question 1 -->
-        <div class="reflection-item active">
-          <div class="reflection-q" onclick="toggleReflection(this)">
-            What strengths or values does this output reflect?
-          </div>
-          <div class="reflection-a-wrapper">
-            <div class="reflection-a">
-              This output reflects a deep commitment to academic rigor, discipline, and ownership of my medical education—core principles aligned with Mapúa’s <strong>DISCOVER</strong> values. Through the detailed synthesis of anatomical structures and histological concepts in MED101, I demonstrated the precision, meticulousness, and patience required for clinical excellence. It showcases my initiative to master foundational medical sciences not merely as isolated facts, but as the essential framework for accurate diagnosis, empathetic communication, and patient care.
-            </div>
-          </div>
-        </div>
+        <div class="reflection-list">
+          <!-- Question 1 Link -->
+          <a href="reflection-q1.html" class="reflection-card-link">
+            <span>Question 1: What strengths or values does this output reflect?</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
 
-        <!-- Question 2 -->
-        <div class="reflection-item active">
-          <div class="reflection-q" onclick="toggleReflection(this)">
-            How did I use creativity to deepen understanding or share knowledge?
-          </div>
-          <div class="reflection-a-wrapper">
-            <div class="reflection-a">
-              I integrated visual and spatial learning strategies to translate complex 3D human anatomy and microscopic tissue architecture into intuitive, structured study resources. By designing clear visual representations, anatomical breakdowns, and educational diagrams, I converted abstract physiological concepts into tangible learning models. This creative synthesis enhanced my own long-term retention while producing accessible reference tools that facilitate peer discussion and bridge health literacy gaps when explaining medical concepts.
-            </div>
-          </div>
-        </div>
+          <!-- Question 2 Link -->
+          <a href="reflection-q2.html" class="reflection-card-link">
+            <span>Question 2: How did I use creativity to deepen understanding or share knowledge?</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
 
-        <!-- Question 3 -->
-        <div class="reflection-item active">
-          <div class="reflection-q" onclick="toggleReflection(this)">
-            How does this connect with my goals as a health leader or innovator?
-          </div>
-          <div class="reflection-a-wrapper">
-            <div class="reflection-a">
-              As an aspiring physician-leader, mastering Human Anatomy & Histology through creative communication directly aligns with my vision of driving health innovation and clinical leadership. Effective medical leadership requires bridging complex scientific knowledge with clear patient communication and creative problem-solving. Developing these outputs reinforces my ability to analyze intricate medical systems, communicate effectively with multidisciplinary healthcare teams, and innovate educational tools—fulfilling <strong>CHED Program Outcomes 1, 5, and 7</strong>.
-            </div>
-          </div>
+          <!-- Question 3 Link -->
+          <a href="reflection-q3.html" class="reflection-card-link">
+            <span>Question 3: How does this connect with my goals as a health leader or innovator?</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
-
       </div> <!-- /reflections-container -->
 
       <!-- PLAYFUL ANATOMY QUIZ GAME SECTION -->
@@ -1034,7 +986,7 @@
       <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-file-pdf"></i> Artifact 03 Preview</h3>
       <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 0.5rem;">Anatomical Study Resource & Educational Media</p>
       <div class="modal-iframe-container">
-        <iframe src="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/preview" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1_eOEFVhzWVU9iF-nSe0g9EoruBIFwI/preview" allow="autoplay"></iframe>
       </div>
     </div>
   </div>
@@ -1054,28 +1006,6 @@
   </div>
 
   <script>
-    // Toggle individual reflection accordion item
-    function toggleReflection(element) {
-      const item = element.parentElement;
-      item.classList.toggle('collapsed');
-      item.classList.toggle('active');
-    }
-
-    // Toggle all reflections simultaneously
-    function toggleAllReflections() {
-      const items = document.querySelectorAll('.reflection-item');
-      const shouldCollapse = Array.from(items).some(item => item.classList.contains('active'));
-      items.forEach(item => {
-        if (shouldCollapse) {
-          item.classList.add('collapsed');
-          item.classList.remove('active');
-        } else {
-          item.classList.remove('collapsed');
-          item.classList.add('active');
-        }
-      });
-    }
-
     // Theme Switcher Functionality
     const themeToggleBtn = document.getElementById('themeToggle');
     themeToggleBtn.addEventListener('click', () => {
