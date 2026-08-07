@@ -12,7 +12,7 @@
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:title" content="ePortfolio | Farlin Kate R. Rana">
-  <meta property="og:description" content="Explore course modules, artifacts, and clinical reflections from Mapúa University School of Medicine.">
+  <meta property="og:description" content="Explore course modules, artifacts, interactive anatomy games, and clinical reflections.">
   <meta property="og:image" content="profile.png">
   <meta property="og:type" content="website">
 
@@ -30,6 +30,8 @@
       --border: #e2e8f0;
       --accent-blue: #2563eb;
       --accent-blue-hover: #1d4ed8;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
       --shadow: rgba(0,0,0,0.05);
       --card-hover-shadow: rgba(0,0,0,0.15);
     }
@@ -116,7 +118,6 @@
       overflow: hidden;
     }
 
-    /* Background decorative particle glow */
     header::after {
       content: '';
       position: absolute;
@@ -142,9 +143,8 @@
       z-index: 2;
     }
 
-    /* ENLARGED LOGO WITH ANIMATION */
     .header-logo {
-      height: 180px; /* Increased height for bigger logo */
+      height: 120px;
       width: auto;
       max-width: 100%;
       object-fit: contain;
@@ -432,64 +432,29 @@
     }
 
     .artifact-btn {
-      flex: 1;
-      padding: 0.6rem 0.8rem;
-      font-size: 0.85rem;
+      width: 100%;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      color: var(--text);
+      border: 1px solid var(--primary);
+      background: var(--primary);
+      color: white;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       text-decoration: none;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(128, 0, 0, 0.2);
     }
 
     .artifact-btn:hover {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
+      background: #5c0000;
+      border-color: #5c0000;
       transform: translateY(-2px);
-    }
-
-    .artifact-btn.primary-btn {
-      background: var(--accent-blue);
-      color: white;
-      border-color: var(--accent-blue);
-    }
-
-    .artifact-btn.primary-btn:hover {
-      background: var(--accent-blue-hover);
-      border-color: var(--accent-blue-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-    }
-
-    .drive-btn { 
-      background-color: var(--accent-blue); 
-      color: white; 
-      padding: 0.75rem 1.4rem; 
-      border-radius: 8px; 
-      text-decoration: none; 
-      font-weight: 600; 
-      font-size: 0.92rem; 
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-      border: none;
-      cursor: pointer;
-    }
-
-    .drive-btn:hover {
-      background-color: var(--accent-blue-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 6px 15px rgba(128, 0, 0, 0.3);
     }
 
     /* Guided Reflection Section */
@@ -498,6 +463,7 @@
       border-radius: 12px; 
       padding: 1.6rem; 
       background: var(--card-bg);
+      margin-bottom: 1.8rem;
     }
 
     .reflection-title {
@@ -571,6 +537,140 @@
       animation: fadeIn 0.4s ease-in-out;
     }
 
+    /* PLAYFUL ANATOMY GAME STYLES */
+    .game-section {
+      background: linear-gradient(135deg, rgba(128,0,0,0.05) 0%, rgba(212,175,55,0.08) 100%);
+      border: 2px dashed var(--secondary);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-top: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .game-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0;
+    }
+
+    .game-score-badge {
+      background: var(--primary);
+      color: white;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(128, 0, 0, 0.3);
+    }
+
+    .game-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+
+    .question-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .option-btn {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .option-btn:hover {
+      border-color: var(--secondary);
+      transform: translateX(4px);
+      background: var(--card-bg);
+    }
+
+    .option-btn.correct {
+      background: rgba(16, 185, 129, 0.15) !important;
+      border-color: var(--accent-green) !important;
+      color: var(--accent-green) !important;
+    }
+
+    .option-btn.wrong {
+      background: rgba(239, 68, 68, 0.15) !important;
+      border-color: var(--accent-red) !important;
+      color: var(--accent-red) !important;
+    }
+
+    .feedback-msg {
+      margin-top: 1rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      min-height: 24px;
+    }
+
+    .game-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.2rem;
+    }
+
+    .next-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .next-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(128, 0, 0, 0.3);
+    }
+
+    .next-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     /* Modal Styling */
     .modal-overlay {
       position: fixed;
@@ -636,7 +736,7 @@
     .modal-iframe-container {
       width: 100%;
       height: 520px;
-      margin: 1rem 0;
+      margin: 1rem 0 0 0;
       border-radius: 10px;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -665,11 +765,10 @@
         text-align: center;
         gap: 1.2rem;
       }
-      .header-logo { height: 130px; } /* Slightly smaller on screens under 768px */
+      .header-logo { height: 130px; }
       .header-content h1 { font-size: 2.2rem; }
       .profile-card { flex-direction: column; text-align: center; }
       .quick-actions { justify-content: center; }
-      .drive-btn { width: 100%; justify-content: center; }
       .modal-iframe-container { height: 360px; }
     }
 
@@ -765,6 +864,7 @@
       <button class="filter-btn active" onclick="filterModules('all', event)"><i class="fa-solid fa-border-all"></i> All Modules</button>
       <button class="filter-btn" onclick="filterModules('artifacts', event)"><i class="fa-solid fa-folder-open"></i> Artifacts</button>
       <button class="filter-btn" onclick="filterModules('reflections', event)"><i class="fa-solid fa-pen-nib"></i> Reflections</button>
+      <button class="filter-btn" onclick="filterModules('games', event)"><i class="fa-solid fa-gamepad"></i> Anatomy Game</button>
     </div>
 
     <!-- MED101 Module Container -->
@@ -780,7 +880,7 @@
       </div>
 
       <div class="description-box">
-        Showcases creative outputs that demonstrate understanding of human structure and function (e.g., anatomical models, drawings, and educational materials).
+        Showcases creative outputs that demonstrate understanding of human structure and function (e.g., anatomical models, drawings, educational materials, and interactive anatomy challenges).
       </div>
 
       <!-- ARTIFACTS CONTAINER -->
@@ -801,7 +901,6 @@
             </div>
             <div class="output-card-actions">
               <button class="artifact-btn" onclick="openModal('artifactModal1')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
-              <a href="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/edit?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Doc</a>
             </div>
           </div>
 
@@ -814,7 +913,6 @@
             </div>
             <div class="output-card-actions">
               <button class="artifact-btn" onclick="openModal('artifactModal2')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
-              <a href="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/view?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open File</a>
             </div>
           </div>
 
@@ -827,7 +925,6 @@
             </div>
             <div class="output-card-actions">
               <button class="artifact-btn" onclick="openModal('artifactModal3')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
-              <a href="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/view?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open File</a>
             </div>
           </div>
 
@@ -880,6 +977,24 @@
 
       </div> <!-- /reflections-container -->
 
+      <!-- PLAYFUL ANATOMY QUIZ GAME SECTION -->
+      <div id="games-container" class="game-section">
+        <div class="game-header">
+          <h3 class="game-title"><i class="fa-solid fa-brain" style="color: var(--secondary);"></i> Anatomy & Histology Challenge</h3>
+          <span class="game-score-badge" id="gameScore">Score: 0 / 5</span>
+        </div>
+
+        <div class="game-box">
+          <div class="question-text" id="quizQuestion">Loading question...</div>
+          <div class="options-grid" id="quizOptions"></div>
+          <div class="feedback-msg" id="quizFeedback"></div>
+          <div class="game-controls">
+            <span style="font-size: 0.85rem; color: var(--subtext);" id="quizProgress">Question 1 of 5</span>
+            <button class="next-btn" id="nextQuestionBtn" onclick="nextQuestion()" disabled>Next Question <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+
     </section>
 
   </div>
@@ -897,9 +1012,6 @@
       <div class="modal-iframe-container">
         <iframe src="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/preview" allow="autoplay"></iframe>
       </div>
-      <a href="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/edit?usp=sharing" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">
-        Open Full Document in Google Docs &rarr;
-      </a>
     </div>
   </div>
 
@@ -912,9 +1024,6 @@
       <div class="modal-iframe-container">
         <iframe src="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/preview" allow="autoplay"></iframe>
       </div>
-      <a href="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/view?usp=sharing" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">
-        Open Full File in Google Drive &rarr;
-      </a>
     </div>
   </div>
 
@@ -927,9 +1036,6 @@
       <div class="modal-iframe-container">
         <iframe src="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/preview" allow="autoplay"></iframe>
       </div>
-      <a href="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/view?usp=sharing" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">
-        Open Full File in Google Drive &rarr;
-      </a>
     </div>
   </div>
 
@@ -943,7 +1049,7 @@
       <p><strong>Program:</strong> MD Program | Year 1 (MLY3)</p>
       <p><strong>Institution:</strong> Mapúa University School of Medicine</p>
       <p><strong>Email:</strong> fkrrana@mymail.mapua.edu.ph</p>
-      <button class="drive-btn" style="width:100%; margin-top: 1rem; justify-content:center;" onclick="copyEmail()">Copy Email Address</button>
+      <button class="action-btn" style="width:100%; margin-top: 1rem; justify-content:center; background: var(--primary); color: white;" onclick="copyEmail()"><i class="fa-solid fa-copy"></i> Copy Email Address</button>
     </div>
   </div>
 
@@ -1009,7 +1115,7 @@
       });
     });
 
-    // Category Filter Navigation logic (Artifacts vs Reflections vs All)
+    // Category Filter Navigation logic
     function filterModules(category, event) {
       document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
       if (event) {
@@ -1018,18 +1124,155 @@
 
       const artifactsBox = document.getElementById('artifacts-container');
       const reflectionsBox = document.getElementById('reflections-container');
+      const gamesBox = document.getElementById('games-container');
 
       if (category === 'artifacts') {
         artifactsBox.style.display = 'block';
         reflectionsBox.style.display = 'none';
+        gamesBox.style.display = 'none';
       } else if (category === 'reflections') {
         artifactsBox.style.display = 'none';
         reflectionsBox.style.display = 'block';
+        gamesBox.style.display = 'none';
+      } else if (category === 'games') {
+        artifactsBox.style.display = 'none';
+        reflectionsBox.style.display = 'none';
+        gamesBox.style.display = 'block';
       } else { // 'all'
         artifactsBox.style.display = 'block';
         reflectionsBox.style.display = 'block';
+        gamesBox.style.display = 'block';
       }
     }
+
+    /* --------------------------------------------------
+       ANATOMY & HISTOLOGY PLAYFUL QUIZ GAME LOGIC
+    -------------------------------------------------- */
+    const quizData = [
+      {
+        question: "1. Which type of epithelium line the alveolar walls in the lungs to facilitate rapid diffusion of gases?",
+        options: ["Simple Squamous Epithelium", "Stratified Squamous Epithelium", "Simple Cuboidal Epithelium", "Pseudostratified Ciliated Columnar"],
+        correct: 0,
+        explanation: "Simple squamous epithelium is ultra-thin, providing a minimal barrier ideal for rapid gas diffusion."
+      },
+      {
+        question: "2. Which bone is commonly referred to as the 'collarbone'?",
+        options: ["Scapula", "Clavicle", "Sternum", "Humerus"],
+        correct: 1,
+        explanation: "The clavicle connects the arm to the trunk and sits anteriorly above the first rib."
+      },
+      {
+        question: "3. What histological structure connects osteocytes with one another within osteons?",
+        options: ["Haversian canals", "Volkmann canals", "Canaliculi", "Lacunae"],
+        correct: 2,
+        explanation: "Canaliculi are tiny channels that allow cellular communication and nutrient transport between osteocytes."
+      },
+      {
+        question: "4. Which organ is primary lined by simple columnar epithelium with microvilli (brush border)?",
+        options: ["Esophagus", "Small Intestine", "Urinary Bladder", "Skin"],
+        correct: 1,
+        explanation: "The small intestine features simple columnar epithelium with microvilli to maximize surface area for absorption."
+      },
+      {
+        question: "5. What anatomical landmark divides the anterior and posterior compartments of the mediastinum?",
+        options: ["Sternal angle (Angle of Louis)", "Xiphoid process", "Clavicular notch", "Costal margin"],
+        correct: 0,
+        explanation: "The sternal angle marks the T4/T5 vertebral level and separates the superior mediastinum from the inferior."
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+      answered = false;
+      const current = quizData[currentQuestionIndex];
+      document.getElementById('quizQuestion').textContent = current.question;
+      document.getElementById('quizProgress').textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+      document.getElementById('nextQuestionBtn').disabled = true;
+      document.getElementById('quizFeedback').textContent = "";
+
+      const optionsGrid = document.getElementById('quizOptions');
+      optionsGrid.innerHTML = "";
+
+      current.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle"></i>`;
+        btn.onclick = () => checkAnswer(idx, btn);
+        optionsGrid.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex, btnElement) {
+      if (answered) return;
+      answered = true;
+
+      const current = quizData[currentQuestionIndex];
+      const allButtons = document.querySelectorAll('.option-btn');
+
+      if (selectedIndex === current.correct) {
+        score++;
+        btnElement.classList.add('correct');
+        btnElement.querySelector('i').className = "fa-solid fa-circle-check";
+        document.getElementById('quizFeedback').style.color = "var(--accent-green)";
+        document.getElementById('quizFeedback').innerHTML = `<i class="fa-solid fa-face-smile"></i> Correct! ${current.explanation}`;
+      } else {
+        btnElement.classList.add('wrong');
+        btnElement.querySelector('i').className = "fa-solid fa-circle-xmark";
+        allButtons[current.correct].classList.add('correct');
+        allButtons[current.correct].querySelector('i').className = "fa-solid fa-circle-check";
+        document.getElementById('quizFeedback').style.color = "var(--accent-red)";
+        document.getElementById('quizFeedback').innerHTML = `<i class="fa-solid fa-face-frown"></i> Incorrect. ${current.explanation}`;
+      }
+
+      document.getElementById('gameScore').textContent = `Score: ${score} / ${quizData.length}`;
+      document.getElementById('nextQuestionBtn').disabled = false;
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < quizData.length) {
+        loadQuestion();
+      } else {
+        showFinalScore();
+      }
+    }
+
+    function showFinalScore() {
+      const box = document.querySelector('.game-box');
+      box.innerHTML = `
+        <div style="text-align: center; padding: 1.5rem 0;">
+          <i class="fa-solid fa-trophy" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+          <h3 style="margin: 0; color: var(--primary); font-size: 1.5rem;">Challenge Completed!</h3>
+          <p style="font-size: 1.1rem; margin: 0.5rem 0 1.5rem 0;">You scored <strong>${score} out of ${quizData.length}</strong></p>
+          <button class="next-btn" onclick="restartQuiz()" style="margin: 0 auto;"><i class="fa-solid fa-rotate-right"></i> Play Again</button>
+        </div>
+      `;
+    }
+
+    function restartQuiz() {
+      currentQuestionIndex = 0;
+      score = 0;
+      document.getElementById('gameScore').textContent = `Score: 0 / ${quizData.length}`;
+      const section = document.getElementById('games-container');
+      section.querySelector('.game-box').innerHTML = `
+        <div class="question-text" id="quizQuestion">Loading question...</div>
+        <div class="options-grid" id="quizOptions"></div>
+        <div class="feedback-msg" id="quizFeedback"></div>
+        <div class="game-controls">
+          <span style="font-size: 0.85rem; color: var(--subtext);" id="quizProgress">Question 1 of 5</span>
+          <button class="next-btn" id="nextQuestionBtn" onclick="nextQuestion()" disabled>Next Question <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      `;
+      loadQuestion();
+    }
+
+    // Initialize Quiz on load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadQuestion();
+    });
   </script>
 
 </body>
