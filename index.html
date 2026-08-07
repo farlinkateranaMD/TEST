@@ -457,7 +457,7 @@
       box-shadow: 0 6px 15px rgba(128, 0, 0, 0.3);
     }
 
-    /* Guided Reflection Section (Updated Page Links) */
+    /* Guided Reflection Section */
     .reflection-section { 
       border: 1px solid var(--border); 
       border-radius: 12px; 
@@ -671,16 +671,13 @@
       background: var(--card-bg);
       border-radius: 16px;
       width: 100%;
-      max-width: 880px;
-      max-height: 90vh;
+      max-width: 500px;
       padding: 2rem;
       position: relative;
       transform: translateY(30px) scale(0.95);
       transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 0 15px 40px rgba(0,0,0,0.4);
       border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
     }
 
     .modal-overlay.active .modal-box {
@@ -705,22 +702,6 @@
       color: var(--primary);
     }
 
-    .modal-iframe-container {
-      width: 100%;
-      height: 520px;
-      margin: 1rem 0 0 0;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #f8fafc;
-    }
-
-    .modal-iframe-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
     footer { 
       text-align: center; 
       padding: 2.5rem 1rem; 
@@ -741,7 +722,6 @@
       .header-content h1 { font-size: 2.2rem; }
       .profile-card { flex-direction: column; text-align: center; }
       .quick-actions { justify-content: center; }
-      .modal-iframe-container { height: 360px; }
     }
 
     /* KEYFRAME ANIMATIONS */
@@ -855,7 +835,7 @@
         Showcases creative outputs that demonstrate understanding of human structure and function (e.g., anatomical models, drawings, educational materials, and interactive anatomy challenges).
       </div>
 
-      <!-- ARTIFACTS CONTAINER -->
+      <!-- ARTIFACTS CONTAINER (Per-Page Navigation) -->
       <div id="artifacts-container">
         
         <div class="artifact-grid-header">
@@ -872,7 +852,7 @@
               <div class="output-card-desc">Detailed synthesis document covering anatomical structures, histological organization, and clinical reflections for MED101.</div>
             </div>
             <div class="output-card-actions">
-              <button class="artifact-btn" onclick="openModal('artifactModal1')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+              <a href="artifact-01.html" class="artifact-btn"><i class="fa-solid fa-up-right-from-square"></i> Open Artifact Page</a>
             </div>
           </div>
 
@@ -884,7 +864,7 @@
               <div class="output-card-desc">High-resolution visual output illustrating structural anatomical features and microscopic tissue organization.</div>
             </div>
             <div class="output-card-actions">
-              <button class="artifact-btn" onclick="openModal('artifactModal2')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+              <a href="artifact-02.html" class="artifact-btn"><i class="fa-solid fa-up-right-from-square"></i> Open Artifact Page</a>
             </div>
           </div>
 
@@ -896,7 +876,7 @@
               <div class="output-card-desc">Interactive learning tool and clinical study resource showcasing creative educational synthesis in anatomy.</div>
             </div>
             <div class="output-card-actions">
-              <button class="artifact-btn" onclick="openModal('artifactModal3')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+              <a href="artifact-03.html" class="artifact-btn"><i class="fa-solid fa-up-right-from-square"></i> Open Artifact Page</a>
             </div>
           </div>
 
@@ -904,24 +884,21 @@
 
       </div> <!-- /artifacts-container -->
 
-      <!-- GUIDED REFLECTION CONTAINER (Separate Page Links) -->
+      <!-- GUIDED REFLECTION CONTAINER (Per-Page Navigation) -->
       <div id="reflections-container" class="reflection-section">
         <h3 class="reflection-title"><i class="fa-solid fa-pen-nib"></i> Guided Reflection</h3>
 
         <div class="reflection-list">
-          <!-- Question 1 Link -->
           <a href="reflection-q1.html" class="reflection-card-link">
             <span>Question 1: What strengths or values does this output reflect?</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
 
-          <!-- Question 2 Link -->
           <a href="reflection-q2.html" class="reflection-card-link">
             <span>Question 2: How did I use creativity to deepen understanding or share knowledge?</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
 
-          <!-- Question 3 Link -->
           <a href="reflection-q3.html" class="reflection-card-link">
             <span>Question 3: How does this connect with my goals as a health leader or innovator?</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -955,45 +932,9 @@
     <p>&copy; 2026 Mapúa University School of Medicine | Farlin Kate R. Rana</p>
   </footer>
 
-  <!-- Modal 1: Artifact 1 Preview -->
-  <div class="modal-overlay" id="artifactModal1">
-    <div class="modal-box">
-      <button class="close-modal" onclick="closeModal('artifactModal1')">&times;</button>
-      <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-file-word"></i> Artifact 01 Preview</h3>
-      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 0.5rem;">Anatomy & Histology Module Reflection Document</p>
-      <div class="modal-iframe-container">
-        <iframe src="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/preview" allow="autoplay"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 2: Artifact 2 Preview -->
-  <div class="modal-overlay" id="artifactModal2">
-    <div class="modal-box">
-      <button class="close-modal" onclick="closeModal('artifactModal2')">&times;</button>
-      <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-file-image"></i> Artifact 02 Preview</h3>
-      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 0.5rem;">Anatomical & Histological Visual Output</p>
-      <div class="modal-iframe-container">
-        <iframe src="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/preview" allow="autoplay"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal 3: Artifact 3 Preview -->
-  <div class="modal-overlay" id="artifactModal3">
-    <div class="modal-box">
-      <button class="close-modal" onclick="closeModal('artifactModal3')">&times;</button>
-      <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-file-pdf"></i> Artifact 03 Preview</h3>
-      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 0.5rem;">Anatomical Study Resource & Educational Media</p>
-      <div class="modal-iframe-container">
-        <iframe src="https://drive.google.com/file/d/1_eOEFVhzWVU9iF-nSe0g9EoruBIFwI/preview" allow="autoplay"></iframe>
-      </div>
-    </div>
-  </div>
-
   <!-- Modal: Contact Info -->
   <div class="modal-overlay" id="contactModal">
-    <div class="modal-box" style="max-width: 500px;">
+    <div class="modal-box">
       <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
       <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-id-card"></i> Student Contact Information</h3>
       <p><strong>Name:</strong> Farlin Kate R. Rana</p>
