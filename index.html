@@ -805,7 +805,6 @@
         <p><strong>Date Submitted:</strong> August 7, 2026</p>
         
         <div class="quick-actions">
-          <button class="action-btn" onclick="copyEmail()"><i class="fa-solid fa-copy"></i> Copy Email</button>
           <button class="action-btn" onclick="openModal('contactModal')"><i class="fa-solid fa-address-card"></i> View Contact Info</button>
         </div>
       </div>
@@ -942,7 +941,6 @@
       <p><strong>Program:</strong> MD Program | Year 1 (MLY3)</p>
       <p><strong>Institution:</strong> Mapúa University School of Medicine</p>
       <p><strong>Email:</strong> fkrrana@mymail.mapua.edu.ph</p>
-      <button class="action-btn" style="width:100%; margin-top: 1rem; justify-content:center; background: var(--primary); color: white;" onclick="copyEmail()"><i class="fa-solid fa-copy"></i> Copy Email Address</button>
     </div>
   </div>
 
@@ -962,12 +960,6 @@
       const scrolled = (winScroll / height) * 100;
       document.getElementById('progressBar').style.width = scrolled + '%';
     });
-
-    // Copy Email helper
-    function copyEmail() {
-      navigator.clipboard.writeText('fkrrana@mymail.mapua.edu.ph');
-      alert('Email address copied to clipboard!');
-    }
 
     // Modal Controls
     function openModal(id) {
