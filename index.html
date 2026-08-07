@@ -16,7 +16,7 @@
   <meta property="og:image" content="profile.png">
   <meta property="og:type" content="website">
 
-  <!-- Font Awesome Icons for Medical/UI Symbols -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -197,6 +197,7 @@
       display: flex;
       gap: 0.5rem;
       margin-top: 1rem;
+      flex-wrap: wrap;
     }
 
     .action-btn {
@@ -212,6 +213,7 @@
       align-items: center;
       gap: 0.4rem;
       transition: all 0.2s ease;
+      text-decoration: none;
     }
 
     .action-btn:hover {
@@ -328,10 +330,17 @@
       transform: translateX(4px);
     }
 
-    /* Dynamic Output Cards Grid */
+    /* Artifact Showcase Grid */
+    .artifact-grid-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
     .outputs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.2rem;
       margin-bottom: 2rem;
     }
@@ -340,33 +349,85 @@
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 1.2rem;
+      padding: 1.3rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: all 0.3s ease;
-      cursor: pointer;
+      position: relative;
     }
 
     .output-card:hover {
       transform: translateY(-4px);
-      border-color: var(--accent-blue);
-      box-shadow: 0 6px 18px var(--shadow);
+      border-color: var(--secondary);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    .output-card-type {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 0.4rem;
     }
 
     .output-card-title {
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
     .output-card-desc {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--subtext);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .output-card-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+
+    .artifact-btn {
+      flex: 1;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .artifact-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .artifact-btn.primary-btn {
+      background: var(--accent-blue);
+      color: white;
+      border-color: var(--accent-blue);
+    }
+
+    .artifact-btn.primary-btn:hover {
+      background: var(--accent-blue-hover);
+      border-color: var(--accent-blue-hover);
     }
 
     .drive-card { 
@@ -469,7 +530,7 @@
     }
 
     .reflection-a-wrapper {
-      max-height: 500px;
+      max-height: 800px;
       overflow: hidden;
       transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
     }
@@ -480,11 +541,11 @@
 
     .reflection-a { 
       background: var(--card-bg); 
-      padding: 1rem 1.2rem; 
-      color: var(--subtext); 
+      padding: 1.2rem; 
+      color: var(--text); 
       border-top: 1px solid var(--border);
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* Modal Styling */
@@ -494,7 +555,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.7);
       backdrop-filter: blur(4px);
       display: flex;
       align-items: center;
@@ -503,6 +564,7 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
       z-index: 2000;
+      padding: 1rem;
     }
 
     .modal-overlay.active {
@@ -513,14 +575,17 @@
     .modal-box {
       background: var(--card-bg);
       border-radius: 12px;
-      width: 90%;
-      max-width: 600px;
-      padding: 2rem;
+      width: 100%;
+      max-width: 850px;
+      max-height: 90vh;
+      padding: 1.8rem;
       position: relative;
       transform: translateY(20px);
       transition: transform 0.3s ease;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
     }
 
     .modal-overlay.active .modal-box {
@@ -533,9 +598,26 @@
       right: 1rem;
       background: none;
       border: none;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       color: var(--subtext);
       cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal-iframe-container {
+      width: 100%;
+      height: 500px;
+      margin: 1rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+    }
+
+    .modal-iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     footer { 
@@ -559,6 +641,7 @@
       .quick-actions { justify-content: center; }
       .drive-card { flex-direction: column; align-items: flex-start; }
       .drive-btn { width: 100%; justify-content: center; }
+      .modal-iframe-container { height: 350px; }
     }
 
     /* KEYFRAME ANIMATIONS */
@@ -606,7 +689,7 @@
         
         <div class="quick-actions">
           <button class="action-btn" onclick="copyEmail()"><i class="fa-solid fa-copy"></i> Copy Email</button>
-          <button class="action-btn" onclick="openModal('contactModal')"><i class="fa-solid fa-address-card"></i> View vCard</button>
+          <button class="action-btn" onclick="openModal('contactModal')"><i class="fa-solid fa-address-card"></i> View Contact Info</button>
         </div>
       </div>
     </div>
@@ -614,7 +697,7 @@
     <!-- Category Filter Bar -->
     <div class="filter-nav">
       <button class="filter-btn active" onclick="filterModules('all')">All Modules</button>
-      <button class="filter-btn" onclick="filterModules('anatomy')">Anatomy & Histology</button>
+      <button class="filter-btn" onclick="filterModules('anatomy')">Human Anatomy & Histology</button>
       <button class="filter-btn" onclick="filterModules('reflections')">Reflections</button>
     </div>
 
@@ -634,71 +717,104 @@
         Showcases creative outputs that demonstrate understanding of human structure and function (e.g., anatomical models, drawings, and educational materials).
       </div>
 
-      <!-- Quick Interactive Artifact Grid -->
-      <h3 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-cubes"></i> Artifact Showcase</h3>
+      <!-- Embedded Course Artifacts Grid -->
+      <div class="artifact-grid-header">
+        <h3 style="color: var(--primary); font-size: 1.15rem; margin: 0;"><i class="fa-solid fa-folder-open"></i> Course Artifacts & Creative Outputs</h3>
+      </div>
+      
       <div class="outputs-grid">
-        <div class="output-card" onclick="openModal('artifactModal1')">
-          <div>
-            <div class="output-card-title"><i class="fa-solid fa-heart-pulse"></i> Anatomical Models</div>
-            <div class="output-card-desc">3D physical and digital representations of cardiac and neural anatomical structures.</div>
-          </div>
-          <span class="tag" style="align-self: flex-start;">Click to Preview &rarr;</span>
-        </div>
         
-        <div class="output-card" onclick="openModal('artifactModal2')">
+        <!-- ARTIFACT 1 -->
+        <div class="output-card">
           <div>
-            <div class="output-card-title"><i class="fa-solid fa-microscope"></i> Histology Atlas Sketches</div>
-            <div class="output-card-desc">Hand-drawn and annotated microscopic tissue slide illustrations.</div>
+            <div class="output-card-type"><i class="fa-solid fa-file-word"></i> Artifact 01 • Written Output / Document</div>
+            <div class="output-card-title">Anatomy & Histology Module Reflection</div>
+            <div class="output-card-desc">Detailed synthesis document covering anatomical structures, histological organization, and clinical reflections for MED101.</div>
           </div>
-          <span class="tag" style="align-self: flex-start;">Click to Preview &rarr;</span>
+          <div class="output-card-actions">
+            <button class="artifact-btn" onclick="openModal('artifactModal1')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+            <a href="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/edit?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Doc</a>
+          </div>
         </div>
+
+        <!-- ARTIFACT 2 -->
+        <div class="output-card">
+          <div>
+            <div class="output-card-type"><i class="fa-solid fa-file-image"></i> Artifact 02 • Visual/Creative Output</div>
+            <div class="output-card-title">Anatomical & Histological Illustration</div>
+            <div class="output-card-desc">High-resolution visual output illustrating structural anatomical features and microscopic tissue organization.</div>
+          </div>
+          <div class="output-card-actions">
+            <button class="artifact-btn" onclick="openModal('artifactModal2')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+            <a href="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/view?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open File</a>
+          </div>
+        </div>
+
+        <!-- ARTIFACT 3 -->
+        <div class="output-card">
+          <div>
+            <div class="output-card-type"><i class="fa-solid fa-file-pdf"></i> Artifact 03 • Educational Resource</div>
+            <div class="output-card-title">Anatomical Study Guide & Media File</div>
+            <div class="output-card-desc">Interactive learning tool and clinical study resource showcasing creative educational synthesis in anatomy.</div>
+          </div>
+          <div class="output-card-actions">
+            <button class="artifact-btn" onclick="openModal('artifactModal3')"><i class="fa-solid fa-eye"></i> Quick Preview</button>
+            <a href="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/view?usp=sharing" target="_blank" class="artifact-btn primary-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open File</a>
+          </div>
+        </div>
+
       </div>
 
+      <!-- Drive Folder Banner -->
       <div class="drive-card">
         <div>
           <strong style="color: var(--primary); font-size: 1.05rem;"><i class="fa-brands fa-google-drive"></i> Complete Google Drive Folder</strong>
           <div style="font-size:0.85rem; color: var(--subtext); margin-top: 0.2rem;">View all original full-resolution anatomical models, drawings, and educational materials</div>
         </div>
         <a href="https://drive.google.com/drive/folders/13KrkMA04oBSgBd_nCRBh6q0K1lAJ_q3e?usp=drive_link" target="_blank" class="drive-btn">
-          Open Google Drive <span>&rarr;</span>
+          Open Drive Folder <span>&rarr;</span>
         </a>
       </div>
 
+      <!-- Guided Reflection Section -->
       <div class="reflection-section">
         <div class="reflection-title">
           <h3 style="margin:0;"><i class="fa-solid fa-pen-nib"></i> Guided Reflection</h3>
           <button class="action-btn" onclick="toggleAllReflections()"><i class="fa-solid fa-arrows-up-down"></i> Toggle All</button>
         </div>
 
-        <div class="reflection-item collapsed">
+        <!-- Question 1 -->
+        <div class="reflection-item active">
           <div class="reflection-q" onclick="toggleReflection(this)">
             What strengths or values does this output reflect?
           </div>
           <div class="reflection-a-wrapper">
             <div class="reflection-a">
-              [Insert your reflection response here]
+              This output reflects a deep commitment to academic rigor, discipline, and ownership of my medical education—core principles aligned with Mapúa’s <strong>DISCOVER</strong> values. Through the detailed synthesis of anatomical structures and histological concepts in MED101, I demonstrated the precision, meticulousness, and patience required for clinical excellence. It showcases my initiative to master foundational medical sciences not merely as isolated facts, but as the essential framework for accurate diagnosis, empathetic communication, and patient care.
             </div>
           </div>
         </div>
 
-        <div class="reflection-item collapsed">
+        <!-- Question 2 -->
+        <div class="reflection-item active">
           <div class="reflection-q" onclick="toggleReflection(this)">
             How did I use creativity to deepen understanding or share knowledge?
           </div>
           <div class="reflection-a-wrapper">
             <div class="reflection-a">
-              [Insert your reflection response here]
+              I integrated visual and spatial learning strategies to translate complex 3D human anatomy and microscopic tissue architecture into intuitive, structured study resources. By designing clear visual representations, anatomical breakdowns, and educational diagrams, I converted abstract physiological concepts into tangible learning models. This creative synthesis enhanced my own long-term retention while producing accessible reference tools that facilitate peer discussion and bridge health literacy gaps when explaining medical concepts.
             </div>
           </div>
         </div>
 
-        <div class="reflection-item collapsed">
+        <!-- Question 3 -->
+        <div class="reflection-item active">
           <div class="reflection-q" onclick="toggleReflection(this)">
             How does this connect with my goals as a health leader or innovator?
           </div>
           <div class="reflection-a-wrapper">
             <div class="reflection-a">
-              [Insert your reflection response here]
+              As an aspiring physician-leader, mastering Human Anatomy & Histology through creative communication directly aligns with my vision of driving health innovation and clinical leadership. Effective medical leadership requires bridging complex scientific knowledge with clear patient communication and creative problem-solving. Developing these outputs reinforces my ability to analyze intricate medical systems, communicate effectively with multidisciplinary healthcare teams, and innovate educational tools—fulfilling <strong>CHED Program Outcomes 1, 5, and 7</strong>.
             </div>
           </div>
         </div>
@@ -713,49 +829,77 @@
     <p>&copy; 2026 Mapúa University School of Medicine | Farlin Kate R. Rana</p>
   </footer>
 
-  <!-- Modal Elements -->
-  <div class="modal-overlay" id="contactModal">
+  <!-- Modal 1: Artifact 1 Preview -->
+  <div class="modal-overlay" id="artifactModal1">
     <div class="modal-box">
+      <button class="close-modal" onclick="closeModal('artifactModal1')">&times;</button>
+      <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-file-word"></i> Artifact 01 Preview</h3>
+      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 0.5rem;">Anatomy & Histology Module Reflection Document</p>
+      <div class="modal-iframe-container">
+        <iframe src="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/preview" allow="autoplay"></iframe>
+      </div>
+      <a href="https://docs.google.com/document/d/1Xa_bOPZ6to_PdokoLtIYqV8QYRhZrtI79nXLIx48ZYc/edit?usp=sharing" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">
+        Open Full Document in Google Docs &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Modal 2: Artifact 2 Preview -->
+  <div class="modal-overlay" id="artifactModal2">
+    <div class="modal-box">
+      <button class="close-modal" onclick="closeModal('artifactModal2')">&times;</button>
+      <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-file-image"></i> Artifact 02 Preview</h3>
+      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 0.5rem;">Anatomical & Histological Visual Output</p>
+      <div class="modal-iframe-container">
+        <iframe src="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/preview" allow="autoplay"></iframe>
+      </div>
+      <a href="https://drive.google.com/file/d/1OA0jn4bKB0HfCS5j6jkboNVLNbwvPNRT/view?usp=sharing" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">
+        Open Full File in Google Drive &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Modal 3: Artifact 3 Preview -->
+  <div class="modal-overlay" id="artifactModal3">
+    <div class="modal-box">
+      <button class="close-modal" onclick="closeModal('artifactModal3')">&times;</button>
+      <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-file-pdf"></i> Artifact 03 Preview</h3>
+      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 0.5rem;">Anatomical Study Resource & Educational Media</p>
+      <div class="modal-iframe-container">
+        <iframe src="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/preview" allow="autoplay"></iframe>
+      </div>
+      <a href="https://drive.google.com/file/d/1_eOEFVhzWsWVU9iF-nSe0g9EoruBIFwI/view?usp=sharing" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">
+        Open Full File in Google Drive &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Modal: Contact Info -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-box" style="max-width: 500px;">
       <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
-      <h3 style="color: var(--primary); margin-top:0;">Contact Information</h3>
+      <h3 style="color: var(--primary); margin-top:0;"><i class="fa-solid fa-id-card"></i> Student Contact Information</h3>
       <p><strong>Name:</strong> Farlin Kate R. Rana</p>
-      <p><strong>Role:</strong> MD Candidate | Year 1 (MLY3)</p>
+      <p><strong>Student ID:</strong> 2026190002</p>
+      <p><strong>Program:</strong> MD Program | Year 1 (MLY3)</p>
       <p><strong>Institution:</strong> Mapúa University School of Medicine</p>
       <p><strong>Email:</strong> fkrrana@mymail.mapua.edu.ph</p>
       <button class="drive-btn" style="width:100%; margin-top: 1rem; justify-content:center;" onclick="copyEmail()">Copy Email Address</button>
     </div>
   </div>
 
-  <div class="modal-overlay" id="artifactModal1">
-    <div class="modal-box">
-      <button class="close-modal" onclick="closeModal('artifactModal1')">&times;</button>
-      <h3 style="color: var(--primary); margin-top:0;">3D Anatomical Models</h3>
-      <p style="color: var(--subtext);">These creative models highlight spatial relationships across anatomical systems.</p>
-      <a href="https://drive.google.com/drive/folders/13KrkMA04oBSgBd_nCRBh6q0K1lAJ_q3e?usp=drive_link" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">View Artifact Files in Drive &rarr;</a>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="artifactModal2">
-    <div class="modal-box">
-      <button class="close-modal" onclick="closeModal('artifactModal2')">&times;</button>
-      <h3 style="color: var(--primary); margin-top:0;">Histology Atlas Sketches</h3>
-      <p style="color: var(--subtext);">Illustrated cellular architecture demonstrating structural variations across organ systems.</p>
-      <a href="https://drive.google.com/drive/folders/13KrkMA04oBSgBd_nCRBh6q0K1lAJ_q3e?usp=drive_link" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">View Artifact Files in Drive &rarr;</a>
-    </div>
-  </div>
-
   <script>
-    // Toggle reflection accordion items
+    // Toggle individual reflection accordion item
     function toggleReflection(element) {
       const item = element.parentElement;
       item.classList.toggle('collapsed');
       item.classList.toggle('active');
     }
 
-    // Toggle all reflections
+    // Toggle all reflections simultaneously
     function toggleAllReflections() {
       const items = document.querySelectorAll('.reflection-item');
-      const shouldCollapse = Array.from(items).some(item => !item.classList.contains('collapsed'));
+      const shouldCollapse = Array.from(items).some(item => item.classList.contains('active'));
       items.forEach(item => {
         if (shouldCollapse) {
           item.classList.add('collapsed');
@@ -797,6 +941,15 @@
       document.getElementById(id).classList.remove('active');
     }
 
+    // Close modal on background overlay click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove('active');
+        }
+      });
+    });
+
     // Filter Navigation
     function filterModules(category) {
       document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -804,7 +957,7 @@
       
       const pages = document.querySelectorAll('.subject-page');
       pages.forEach(page => {
-        if (category === 'all' || page.dataset.category === category) {
+        if (category === 'all' || page.dataset.category === category || category === 'reflections') {
           page.style.display = 'block';
         } else {
           page.style.display = 'none';
