@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Social Media Metadata -->
+  <title>ePortfolio | Farlin Kate R. Rana</title>
+  <meta name="description" content="Medical ePortfolio of Farlin Kate R. Rana - Mapúa University School of Medicine | MD Program.">
+  <meta name="keywords" content="Medical Portfolio, Farlin Kate Rana, Mapua University, Medicine, ePortfolio, MD Program">
+  <meta name="author" content="Farlin Kate R. Rana">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="ePortfolio | Farlin Kate R. Rana">
+  <meta property="og:description" content="Explore course modules, artifacts, and clinical reflections from Mapúa University School of Medicine.">
+  <meta property="og:image" content="profile.png">
+  <meta property="og:type" content="website">
+
+  <!-- Font Awesome Icons for Medical/UI Symbols -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #800000;
+      --secondary: #d4af37;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #2c3e50;
+      --subtext: #4a5568;
+      --border: #e2e8f0;
+      --accent-blue: #2563eb;
+      --accent-blue-hover: #1d4ed8;
+      --shadow: rgba(0,0,0,0.05);
+      --card-hover-shadow: rgba(0,0,0,0.12);
+    }
+
+    body.dark-theme {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f1f5f9;
+      --subtext: #94a3b8;
+      --border: #334155;
+      --accent-blue: #3b82f6;
+      --accent-blue-hover: #60a5fa;
+      --shadow: rgba(0,0,0,0.3);
+      --card-hover-shadow: rgba(0,0,0,0.5);
+    }
+
+    * { box-sizing: border-box; }
+
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      background-color: var(--bg); 
+      color: var(--text); 
+      margin: 0; 
+      padding: 0; 
+      line-height: 1.6; 
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Reading Progress Bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: var(--secondary);
+      width: 0%;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Floating Theme Toggle Button */
+    .theme-toggle-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary);
+      color: white;
+      border: 2px solid var(--secondary);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    /* Animated Header */
+    header { 
+      background: linear-gradient(135deg, #800000 0%, #4a0000 50%, #800000 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+      color: white; 
+      padding: 2.5rem 1.5rem; 
+      position: relative;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .header-logo {
+      height: 120px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+      animation: fadeInDown 0.8s ease-out;
+      flex-shrink: 0;
+    }
+
+    .header-content h1 { 
+      margin: 0; 
+      font-size: 2.6rem; 
+      animation: fadeInDown 0.8s ease-out;
+      line-height: 1.2;
+    }
+
+    .header-content p { 
+      margin: 0.5rem 0 0; 
+      opacity: 0.9; 
+      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+      font-size: 1.05rem;
+    }
+
+    .container { 
+      max-width: 1100px; 
+      margin: 2rem auto; 
+      padding: 0 1rem; 
+    }
+    
+    /* Animated Profile Card */
+    .profile-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 15px var(--shadow);
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-top: 5px solid var(--secondary);
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.3s backwards;
+      transition: box-shadow 0.3s ease, background-color 0.3s ease;
+      position: relative;
+    }
+
+    .profile-card:hover {
+      box-shadow: 0 8px 25px var(--card-hover-shadow);
+    }
+
+    .profile-img { 
+      width: 120px; 
+      height: 120px; 
+      border-radius: 50%; 
+      border: 3px solid var(--primary); 
+      object-fit: cover; 
+      transition: transform 0.4s ease;
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+      animation: pulseGlow 3s infinite;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05) rotate(3deg);
+    }
+
+    .profile-details { flex: 1; }
+    .profile-details h2 { margin: 0 0 0.4rem 0; color: var(--primary); }
+    .profile-details p { margin: 0.2rem 0; font-size: 0.95rem; color: var(--subtext); }
+
+    .quick-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .action-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Category Filter Nav */
+    .filter-nav {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .filter-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--subtext);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Module Section Styles */
+    .subject-page { 
+      background: var(--card-bg); 
+      border-radius: 12px; 
+      padding: 2rem; 
+      box-shadow: 0 4px 15px var(--shadow); 
+      border: 1px solid var(--border);
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    .subject-page:hover {
+      box-shadow: 0 8px 25px var(--card-hover-shadow);
+    }
+
+    .subject-header { 
+      border-bottom: 2px solid var(--border); 
+      padding-bottom: 1rem; 
+      margin-bottom: 1.5rem; 
+    }
+
+    .code-badge { 
+      display: inline-block; 
+      background: var(--secondary); 
+      color: #000; 
+      font-weight: bold; 
+      padding: 0.25rem 0.7rem; 
+      border-radius: 4px; 
+      font-size: 0.85rem; 
+      margin-bottom: 0.5rem; 
+      box-shadow: 0 2px 5px rgba(212, 175, 55, 0.3);
+      animation: pulseBadge 2.5s infinite;
+    }
+
+    .tags { 
+      display: flex; 
+      gap: 0.5rem; 
+      flex-wrap: wrap; 
+      margin: 1rem 0; 
+    }
+
+    .tag { 
+      background: var(--bg); 
+      padding: 0.35rem 0.75rem; 
+      border-radius: 6px; 
+      font-size: 0.8rem; 
+      font-weight: 600; 
+      color: var(--subtext); 
+      transition: all 0.25s ease;
+      cursor: default;
+      user-select: none;
+      border: 1px solid var(--border);
+    }
+
+    .tag:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 3px 8px var(--shadow);
+    }
+
+    .tag.discover { 
+      background: rgba(212, 175, 55, 0.15); 
+      color: #b48a05; 
+      border-color: var(--secondary);
+    }
+
+    .description-box { 
+      background-color: var(--bg); 
+      padding: 1.2rem; 
+      border-radius: 8px; 
+      border-left: 4px solid var(--primary); 
+      margin-bottom: 1.5rem; 
+      font-size: 0.95rem; 
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: var(--text);
+    }
+
+    .description-box:hover {
+      transform: translateX(4px);
+    }
+
+    /* Dynamic Output Cards Grid */
+    .outputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .output-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .output-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+
+    .output-card-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .output-card-desc {
+      font-size: 0.85rem;
+      color: var(--subtext);
+      margin-bottom: 1rem;
+    }
+
+    .drive-card { 
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0.15) 100%); 
+      border: 1px solid rgba(37, 99, 235, 0.3); 
+      border-radius: 10px; 
+      padding: 1.3rem; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-bottom: 2rem; 
+      flex-wrap: wrap; 
+      gap: 1rem; 
+      transition: all 0.3s ease;
+    }
+
+    .drive-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    .drive-btn { 
+      background-color: var(--accent-blue); 
+      color: white; 
+      padding: 0.7rem 1.3rem; 
+      border-radius: 6px; 
+      text-decoration: none; 
+      font-weight: 600; 
+      font-size: 0.9rem; 
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .drive-btn:hover {
+      background-color: var(--accent-blue-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .reflection-section { 
+      border: 1px solid var(--border); 
+      border-radius: 10px; 
+      padding: 1.5rem; 
+      background: var(--card-bg);
+    }
+
+    .reflection-title {
+      margin-top: 0; 
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .reflection-item {
+      margin-bottom: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .reflection-item:hover {
+      border-color: var(--secondary);
+    }
+
+    .reflection-q { 
+      font-weight: 700; 
+      color: var(--text); 
+      background: var(--bg);
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .reflection-q:hover {
+      color: var(--primary);
+    }
+
+    .reflection-q::after {
+      content: '▼';
+      font-size: 0.75rem;
+      color: var(--subtext);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reflection-item.active .reflection-q::after {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+
+    .reflection-a-wrapper {
+      max-height: 500px;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    }
+
+    .reflection-item.collapsed .reflection-a-wrapper {
+      max-height: 0;
+    }
+
+    .reflection-a { 
+      background: var(--card-bg); 
+      padding: 1rem 1.2rem; 
+      color: var(--subtext); 
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 2000;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      padding: 2rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--subtext);
+      cursor: pointer;
+    }
+
+    footer { 
+      text-align: center; 
+      padding: 2.5rem 1rem; 
+      font-size: 0.9rem; 
+      color: var(--subtext); 
+      animation: fadeIn 1s ease-out 1.2s backwards;
+    }
+
+    /* MEDIA QUERIES FOR MOBILE OPTIMIZATION */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      .header-logo { height: 80px; }
+      .header-content h1 { font-size: 2rem; }
+      .profile-card { flex-direction: column; text-align: center; }
+      .quick-actions { justify-content: center; }
+      .drive-card { flex-direction: column; align-items: flex-start; }
+      .drive-btn { width: 100%; justify-content: center; }
+    }
+
+    /* KEYFRAME ANIMATIONS */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); } 70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
+    @keyframes pulseBadge { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); } 70% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
+  </style>
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Floating Theme Switcher -->
+  <button class="theme-toggle-btn" id="themeToggle" title="Toggle Light/Dark Mode" aria-label="Toggle Theme">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
+  <header>
+    <div class="header-container">
+      <img src="logo.png" alt="Mapúa University Logo" class="header-logo">
+      <div class="header-content">
+        <h1>ePortfolio</h1>
+        <p>Mapúa University School of Medicine | MD Program</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <!-- Profile Section -->
+    <div class="profile-card">
+      <img src="profile.png" alt="Farlin Kate R. Rana" class="profile-img">
+      <div class="profile-details">
+        <h2>Farlin Kate R. Rana</h2>
+        <p><strong>Student Number:</strong> 2026190002</p>
+        <p><strong>Year Level:</strong> Year 1 (MLY3)</p>
+        <p><strong>Email Address:</strong> fkrrana@mymail.mapua.edu.ph</p>
+        <p><strong>Date Submitted:</strong> August 7, 2026</p>
+        
+        <div class="quick-actions">
+          <button class="action-btn" onclick="copyEmail()"><i class="fa-solid fa-copy"></i> Copy Email</button>
+          <button class="action-btn" onclick="openModal('contactModal')"><i class="fa-solid fa-address-card"></i> View vCard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="filter-nav">
+      <button class="filter-btn active" onclick="filterModules('all')">All Modules</button>
+      <button class="filter-btn" onclick="filterModules('anatomy')">Anatomy & Histology</button>
+      <button class="filter-btn" onclick="filterModules('reflections')">Reflections</button>
+    </div>
+
+    <!-- Integrated MED101 Section -->
+    <section class="subject-page" data-category="anatomy">
+      
+      <div class="subject-header">
+        <span class="code-badge">MED101</span>
+        <h2 style="margin: 0.3rem 0; color: var(--primary);">Human Anatomy & Histology</h2>
+        <div class="tags">
+          <span class="tag"><i class="fa-solid fa-graduation-cap"></i> CHED PO 1, 5, 7</span>
+          <span class="tag discover"><i class="fa-solid fa-lightbulb"></i> DISCOVER: Innovation, Ownership, Respect</span>
+        </div>
+      </div>
+
+      <div class="description-box">
+        Showcases creative outputs that demonstrate understanding of human structure and function (e.g., anatomical models, drawings, and educational materials).
+      </div>
+
+      <!-- Quick Interactive Artifact Grid -->
+      <h3 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-cubes"></i> Artifact Showcase</h3>
+      <div class="outputs-grid">
+        <div class="output-card" onclick="openModal('artifactModal1')">
+          <div>
+            <div class="output-card-title"><i class="fa-solid fa-heart-pulse"></i> Anatomical Models</div>
+            <div class="output-card-desc">3D physical and digital representations of cardiac and neural anatomical structures.</div>
+          </div>
+          <span class="tag" style="align-self: flex-start;">Click to Preview &rarr;</span>
+        </div>
+        
+        <div class="output-card" onclick="openModal('artifactModal2')">
+          <div>
+            <div class="output-card-title"><i class="fa-solid fa-microscope"></i> Histology Atlas Sketches</div>
+            <div class="output-card-desc">Hand-drawn and annotated microscopic tissue slide illustrations.</div>
+          </div>
+          <span class="tag" style="align-self: flex-start;">Click to Preview &rarr;</span>
+        </div>
+      </div>
+
+      <div class="drive-card">
+        <div>
+          <strong style="color: var(--primary); font-size: 1.05rem;"><i class="fa-brands fa-google-drive"></i> Complete Google Drive Folder</strong>
+          <div style="font-size:0.85rem; color: var(--subtext); margin-top: 0.2rem;">View all original full-resolution anatomical models, drawings, and educational materials</div>
+        </div>
+        <a href="https://drive.google.com/drive/folders/13KrkMA04oBSgBd_nCRBh6q0K1lAJ_q3e?usp=drive_link" target="_blank" class="drive-btn">
+          Open Google Drive <span>&rarr;</span>
+        </a>
+      </div>
+
+      <div class="reflection-section">
+        <div class="reflection-title">
+          <h3 style="margin:0;"><i class="fa-solid fa-pen-nib"></i> Guided Reflection</h3>
+          <button class="action-btn" onclick="toggleAllReflections()"><i class="fa-solid fa-arrows-up-down"></i> Toggle All</button>
+        </div>
+
+        <div class="reflection-item collapsed">
+          <div class="reflection-q" onclick="toggleReflection(this)">
+            What strengths or values does this output reflect?
+          </div>
+          <div class="reflection-a-wrapper">
+            <div class="reflection-a">
+              [Insert your reflection response here]
+            </div>
+          </div>
+        </div>
+
+        <div class="reflection-item collapsed">
+          <div class="reflection-q" onclick="toggleReflection(this)">
+            How did I use creativity to deepen understanding or share knowledge?
+          </div>
+          <div class="reflection-a-wrapper">
+            <div class="reflection-a">
+              [Insert your reflection response here]
+            </div>
+          </div>
+        </div>
+
+        <div class="reflection-item collapsed">
+          <div class="reflection-q" onclick="toggleReflection(this)">
+            How does this connect with my goals as a health leader or innovator?
+          </div>
+          <div class="reflection-a-wrapper">
+            <div class="reflection-a">
+              [Insert your reflection response here]
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Mapúa University School of Medicine | Farlin Kate R. Rana</p>
+  </footer>
+
+  <!-- Modal Elements -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-box">
+      <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
+      <h3 style="color: var(--primary); margin-top:0;">Contact Information</h3>
+      <p><strong>Name:</strong> Farlin Kate R. Rana</p>
+      <p><strong>Role:</strong> MD Candidate | Year 1 (MLY3)</p>
+      <p><strong>Institution:</strong> Mapúa University School of Medicine</p>
+      <p><strong>Email:</strong> fkrrana@mymail.mapua.edu.ph</p>
+      <button class="drive-btn" style="width:100%; margin-top: 1rem; justify-content:center;" onclick="copyEmail()">Copy Email Address</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="artifactModal1">
+    <div class="modal-box">
+      <button class="close-modal" onclick="closeModal('artifactModal1')">&times;</button>
+      <h3 style="color: var(--primary); margin-top:0;">3D Anatomical Models</h3>
+      <p style="color: var(--subtext);">These creative models highlight spatial relationships across anatomical systems.</p>
+      <a href="https://drive.google.com/drive/folders/13KrkMA04oBSgBd_nCRBh6q0K1lAJ_q3e?usp=drive_link" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">View Artifact Files in Drive &rarr;</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="artifactModal2">
+    <div class="modal-box">
+      <button class="close-modal" onclick="closeModal('artifactModal2')">&times;</button>
+      <h3 style="color: var(--primary); margin-top:0;">Histology Atlas Sketches</h3>
+      <p style="color: var(--subtext);">Illustrated cellular architecture demonstrating structural variations across organ systems.</p>
+      <a href="https://drive.google.com/drive/folders/13KrkMA04oBSgBd_nCRBh6q0K1lAJ_q3e?usp=drive_link" target="_blank" class="drive-btn" style="width:100%; justify-content:center;">View Artifact Files in Drive &rarr;</a>
+    </div>
+  </div>
+
+  <script>
+    // Toggle reflection accordion items
+    function toggleReflection(element) {
+      const item = element.parentElement;
+      item.classList.toggle('collapsed');
+      item.classList.toggle('active');
+    }
+
+    // Toggle all reflections
+    function toggleAllReflections() {
+      const items = document.querySelectorAll('.reflection-item');
+      const shouldCollapse = Array.from(items).some(item => !item.classList.contains('collapsed'));
+      items.forEach(item => {
+        if (shouldCollapse) {
+          item.classList.add('collapsed');
+          item.classList.remove('active');
+        } else {
+          item.classList.remove('collapsed');
+          item.classList.add('active');
+        }
+      });
+    }
+
+    // Theme Switcher Functionality
+    const themeToggleBtn = document.getElementById('themeToggle');
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      themeToggleBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    });
+
+    // Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // Copy Email helper
+    function copyEmail() {
+      navigator.clipboard.writeText('fkrrana@mymail.mapua.edu.ph');
+      alert('Email address copied to clipboard!');
+    }
+
+    // Modal Controls
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    // Filter Navigation
+    function filterModules(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      const pages = document.querySelectorAll('.subject-page');
+      pages.forEach(page => {
+        if (category === 'all' || page.dataset.category === category) {
+          page.style.display = 'block';
+        } else {
+          page.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
